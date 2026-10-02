@@ -259,7 +259,9 @@ python -m ruff check unified_live tests
 python -m unified_live --demo --smoke-seconds 5
 ```
 
-CI tests Windows and Linux. Headless Qt uses `QT_QPA_PLATFORM=offscreen`. The timed
+The [CI definition for Windows and Linux](docs/ci/README.md) is ready but **not
+activated**: the publishing GitHub OAuth connection lacks the `workflow` scope.
+Headless Qt uses `QT_QPA_PLATFORM=offscreen`. The timed
 smoke command opens the real Qt application, runs both mock subprocesses, checks
 preview and audio progress, then closes. `--screenshot <file.png>` captures that
 window; it is not an illustrated mockup. See [validation](docs/VALIDATION.md).

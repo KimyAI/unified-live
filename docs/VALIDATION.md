@@ -23,8 +23,10 @@ Observed on 2026-10-02, Linux / Python 3.13.5:
 Local Qt runtime libraries were extracted under `/tmp` for offscreen verification;
 the host's system libraries were not modified. The smoke run records audio startup
 underruns/dropped stale samples; it is not a glitch-free hardware acceptance test.
-CI adds a clean Python 3.11 Windows/Linux environment; see GitHub Actions for its
-actual result, not an assumption based on this local run.
+The Python 3.11 Windows/Linux CI definition is stored in `docs/ci/tests.yml`.
+GitHub rejected creation of `.github/workflows/tests.yml` because the publishing
+OAuth connection lacks `workflow` scope. The code was published with the workflow
+kept as an inactive template. No GitHub Actions run or Windows test is claimed.
 
 ![Qt mock cockpit captured during a real smoke run](images/cockpit-mock.png)
 
