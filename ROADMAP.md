@@ -6,19 +6,25 @@ planned. Never replace a hardware gate with mock benchmark numbers.
 ## Phase 0 — upstream and design
 - [x] Select original modular desktop architecture and process boundaries.
 - [x] Write ARCHITECTURE.md before implementation.
-- [ ] Complete source/weight license audit with pinned upstream revisions.
+- [x] Complete source/weight license audit with pinned upstream revisions.
 
 ## Phase 1 — model-free cockpit
-- [ ] PySide6 dark UI: LIVE, FACE, VOICE, TRAIN, PROFILES, DEVICES, PERFORMANCE,
+- [x] PySide6 dark UI: LIVE, FACE, VOICE, TRAIN, PROFILES, DEVICES, PERFORMANCE,
       SETTINGS and backend management.
-- [ ] Stable interfaces, registry, EngineManager, private framed IPC, isolated
+- [x] Stable interfaces, registry, EngineManager, private framed IPC, isolated
       workers, health checks, restart, timeout and crash handling.
-- [ ] Mock face/voice engines; independent camera/audio capture and ON/OFF bypass.
-- [ ] Camera preview/device selection; optional virtual video/audio outputs.
-- [ ] JSON settings/profiles; measured telemetry, latency and bounded auto sync.
-- [ ] Separate logs; real measured benchmark command; Windows setup script.
-- [ ] Unit/process tests and Qt smoke test.
+- [x] Mock face/voice engines; independent camera/audio capture and ON/OFF bypass.
+- [x] Camera preview/device selection; optional virtual video/audio output code
+      (physical devices remain untested on this headless host).
+- [x] JSON settings/profiles; measured telemetry, latency and bounded auto sync.
+- [x] Separate logs; real measured benchmark command; Windows setup script
+      (script execution still requires Windows).
+- [x] Unit/process tests and real Qt offscreen smoke test on Linux.
 - [ ] Windows 11 + physical webcam/mic + RTX 4090 acceptance.
+
+Portable Phase 1 implementation is tested. Milestone 1 target-hardware acceptance
+is **still open**: no camera, microphone, NVIDIA runtime or virtual driver is
+available on this Linux development VM.
 
 Milestone 1 acceptance: `python -m unified_live` opens a usable cockpit; synthetic
 demo is available without devices, physical camera/mic work when installed, both
@@ -27,14 +33,17 @@ values or unavailable, delay queues compensate measured imbalance, and restartin
 one backend does not stop the other. Hardware-only checks remain explicit.
 
 ## Phase 2 — ReSwapper
-- [ ] External checkout + independent venv bridge; local checkpoint/source only.
-- [ ] Face absence/error handling; parameters limited to verified capabilities.
-- [ ] Contract tests without weights, then real Windows camera/virtual output test.
+- [x] External checkout + independent venv bridge; local checkpoint/source only.
+- [x] Face absence/error handling; parameters limited to verified capabilities.
+- [x] Contract tests without weights (fake inference dependencies).
+- [ ] Real Windows camera/virtual output test with authorized weights.
 
 ## Phase 3 — Seed-VC realtime
-- [ ] Stateful external streaming bridge (context, crossfade, rate negotiation).
-- [ ] Reference voice and diffusion/realtime controls.
-- [ ] Stream continuity/IPC tests, then real microphone/virtual audio acceptance.
+- [x] Experimental stateful external streaming bridge (context, crossfade/SOLA,
+      strict 22050 Hz format, local assets, no implicit downloads).
+- [x] Reference voice and diffusion/realtime controls through advanced options.
+- [x] Stream continuity/history/reset/IPC tests without model weights.
+- [ ] Real microphone/virtual audio acceptance with authorized weights.
 - [ ] Combined ReSwapper + Seed-VC MVP on RTX 4090, measured A/V calibration.
 
 Proceed from Phase 1 implementation to these bridges automatically. Do not claim
